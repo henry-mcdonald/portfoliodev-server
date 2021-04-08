@@ -5,6 +5,8 @@ const rowdy = require('rowdy-logger')
 const morgan = require('morgan')
 const passport = require('passport')
 
+console.log(process.env)
+
 // Variables
 const app = express()
 const PORT = process.env.PORT || 8000
