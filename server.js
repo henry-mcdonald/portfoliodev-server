@@ -1,7 +1,9 @@
 // Required Modules
+require('dotenv').config()
 const express = require('express')
 const rowdy = require('rowdy-logger')
 const morgan = require('morgan')
+const passport = require('passport')
 
 // Variables
 const app = express()
@@ -14,6 +16,8 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
 // grabs json data, and puts it in the req.body
 app.use(express.json()) 
+// initialize passport
+app.use(passport.initialize())
 
 // Controllers
 
