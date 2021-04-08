@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(passport.initialize())
 
 // Controllers
-
+app.use('/auth', require('./controllers/authController'))
 
 // Routes
 app.get('/', (req, res) => {
