@@ -33,8 +33,8 @@ router.get('/google/callback',
         const oneHour = 3600
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: oneHour })
         console.log(token)
-        
-        res.redirect(`${process.env.CLIENT_URL}`);
+
+        res.redirect(`${process.env.CLIENT_URL}/saveToken?token=${token}`);
     }
 )
 
