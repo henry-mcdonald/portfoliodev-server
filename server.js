@@ -4,8 +4,7 @@ const express = require('express')
 const rowdy = require('rowdy-logger')
 const morgan = require('morgan')
 const passport = require('passport')
-
-console.log(process.env)
+require('./models') // connect to mongoDB
 
 // Variables
 const app = express()

@@ -17,7 +17,7 @@ router.get('/google/callback',
         // I want to construct a JWT token from that user data
         // And then I want to send that JWT to the client
         const payload = {
-            // _id = req.user._id, // The mongodb id
+            _id: req.user._id, // The mongodb id
             provider: req.user.provider,
             provider_id: req.user.id, // The google id
             displayName: req.user.displayName,
@@ -31,6 +31,7 @@ router.get('/google/callback',
 
         // Create the JWT based off the user's data
         const oneHour = 3600
+        // const oneSecond = 1
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: oneHour })
         console.log(token)
 
