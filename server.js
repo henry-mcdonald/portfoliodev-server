@@ -4,6 +4,7 @@ const express = require('express')
 const rowdy = require('rowdy-logger')
 const morgan = require('morgan')
 const passport = require('passport')
+const cors = require('cors')
 require('./models') // connect to mongoDB
 
 // Variables
@@ -20,8 +21,12 @@ app.use(express.json())
 // initialize passport
 app.use(passport.initialize())
 
+app.use(cors())
+
 // Controllers
 app.use('/auth', require('./controllers/authController'))
+app.use('/exampleResource', require('./controllers/exampleResource'))
+
 
 // Routes
 app.get('/', (req, res) => {
