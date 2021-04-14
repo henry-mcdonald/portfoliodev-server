@@ -21,8 +21,13 @@ const UserSchema = new mongoose.Schema({
     photos: [{
         value: String
     }],
+    pages: [{
+        name: String,
+        css: String,
+        html: String
+    }]
 }, {
     timestamps: true
 })
-
-module.exports = User = mongoose.model('user', UserSchema)
+User = mongoose.model('user', UserSchema)
+module.exports = User

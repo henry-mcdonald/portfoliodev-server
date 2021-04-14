@@ -31,8 +31,8 @@ router.get('/google/callback',
 
         // Create the JWT based off the user's data
         const oneHour = 3600
-        // const oneSecond = 1
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: oneHour })
+        const oneBaktun = 12441600000
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: oneBaktun })
         console.log(token)
         console.log(payload._id)
 

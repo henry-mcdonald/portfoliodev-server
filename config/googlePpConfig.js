@@ -5,6 +5,10 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/User')
 
+
+const initial_html = '<div>\n\t<div>\n\t\t<h1>Put Some</h1>\n\t</div>\n\t<div>\n\t\t<h2>HTML here! </h2>\n\t</div>\n</div>\n<a href="samplelink">Sample Link</a>'
+const initial_css = "h1{color:red;}\nh2{color:blue;}"
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -34,8 +38,10 @@ passport.use(new GoogleStrategy({
                     givenName: profile.name.givenName,
                     middleName: profile.name.middleName
                 },
-                photos: profile.photos
+                photos: profile.photos,
+                pages: [{name:"Main",html:initial_html,css:initial_css}]
             })
+            console.log(newUser)
             return cb(null, newUser)
         }
     }

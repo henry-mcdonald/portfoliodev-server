@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/oauthBoilerplate'
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/portfoliodev'
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,

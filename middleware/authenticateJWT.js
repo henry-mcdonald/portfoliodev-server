@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 const authenticateJWT = async (req, res, next) => {
-    console.log("You've hit the authenticate JWT middleware")
     try {
         // Find the attached jwt
         const authHeader = req.headers.authorization

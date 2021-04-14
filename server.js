@@ -26,6 +26,8 @@ app.use(cors())
 // Controllers
 app.use('/auth', require('./controllers/authController'))
 app.use('/exampleResource', require('./controllers/exampleResource'))
+app.use('/users',require('./controllers/userController'))
+app.use('/pages', require('./controllers/pageController'))
 
 
 // Routes
