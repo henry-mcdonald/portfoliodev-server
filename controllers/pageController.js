@@ -80,11 +80,12 @@ router.post('/:userId/:PageName', authLockedRoute, async(req,res) => {
             editIndex = i
         }
     }
-    console.log(pageData.pages)
-    console.log(editIndex)
-    pageData.pages[editIndex].html = req.body.html
-    pageData.pages[editIndex].css = req.body.css
+    console.log(pageData.pages[editIndex])
+    // console.log(editIndex)
+    pageData.pages[editIndex].html = req.body.content.html
+    pageData.pages[editIndex].css = req.body.content.css
     await pageData.save()
+    console.log(pageData)
     res.json({pageData:pageData})
 
 
