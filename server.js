@@ -32,7 +32,7 @@ app.use('/pages', require('./controllers/pageController'))
 
 // Routes
 app.get('/', (req, res) => {
-    res.json({ msg: 'Hello world!' })
+    res.json({ msg: 'This is backend for portfolio.dev' })
 })
 
 // Listen!
