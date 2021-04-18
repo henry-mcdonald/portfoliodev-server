@@ -26,7 +26,8 @@ router.get('/google/callback',
                 middleName: req.user.name.middleName,
                 givenName: req.user.name.givenName
             },
-            photos: req.user.photos
+            photos: req.user.photos,
+            username: req.user.username
         }
 
         // Create the JWT based off the user's data

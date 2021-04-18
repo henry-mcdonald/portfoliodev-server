@@ -2,6 +2,7 @@ const router = require('express').Router()
 const authLockedRoute = require('../middleware/authenticateJWT')
 require('../models')
 const User = require('../models/User')
+const PublicLink = require('../models/PublicLink')
 //get all pages for a user
 
 //get all of the pages of the user stored in our db
@@ -80,11 +81,12 @@ router.post('/:userId/:PageName', authLockedRoute, async(req,res) => {
             editIndex = i
         }
     }
-    console.log(pageData.pages)
-    console.log(editIndex)
-    pageData.pages[editIndex].html = req.body.html
-    pageData.pages[editIndex].css = req.body.css
+    console.log(pageData.pages[editIndex])
+    // console.log(editIndex)
+    pageData.pages[editIndex].html = req.body.content.html
+    pageData.pages[editIndex].css = req.body.content.css
     await pageData.save()
+    console.log(pageData)
     res.json({pageData:pageData})
 
 
@@ -93,5 +95,33 @@ router.post('/:userId/:PageName', authLockedRoute, async(req,res) => {
         res.status(500).json({msg:'error with edit route'})
     }
 })
+
+// get another user's page and view it
+
+router.get('/getOtherUsersPages/:username', async(req,res) => {
+    console.log("get user pages route is hit")
+    try{
+    const username = req.params.username
+
+
+    const pageData = await User.findOne(
+        {username : username}
+    ).select('pages').populate()
+    console.log(pageData)
+    res.json({pageData:pageData})
+
+    } catch (err){
+        console.log(err)
+        res.json({msg:"there is no user with that username, or other error"})
+    }
+})
+
+
+
+router.get('/allPublicLinks', async(req,res) => {
+   links = await PublicLink.find({})
+   res.json({allLinks: links})
+})
+
 
 module.exports = router
