@@ -9,7 +9,8 @@
     "passport": "^0.4.1",
     "passport-github2": "^0.1.12",
     "passport-google-oauth20": "^2.0.0",
-    "rowdy-logger": "^1.0.2"
+    "rowdy-logger": "^1.0.2",
+    "sanitize-html": "^2.3.3"
   },
   "scripts": {
     "start": "node server.js"

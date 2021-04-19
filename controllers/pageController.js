@@ -3,6 +3,7 @@ const authLockedRoute = require('../middleware/authenticateJWT')
 require('../models')
 const User = require('../models/User')
 const PublicLink = require('../models/PublicLink')
+const sanitizeHtml = require('sanitize-html')
 //get all pages for a user
 
 //get all of the pages of the user stored in our db
@@ -83,8 +84,8 @@ router.post('/:userId/:PageName', authLockedRoute, async(req,res) => {
     }
     console.log(pageData.pages[editIndex])
     // console.log(editIndex)
-    pageData.pages[editIndex].html = req.body.content.html
-    pageData.pages[editIndex].css = req.body.content.css
+    pageData.pages[editIndex].html = sanitizeHtml(req.body.content.html)
+    pageData.pages[editIndex].css = sanitizeHtml(req.body.content.css)
     await pageData.save()
     console.log(pageData)
     res.json({pageData:pageData})
