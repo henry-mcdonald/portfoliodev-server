@@ -12,7 +12,7 @@ router.get('/getAllPages/:userId',authLockedRoute, async(req,res) => {
     const reqUserId = req.params.userId
     const localUserId = res.locals.user.id
     if(reqUserId !== localUserId){
-        throw new Exception("Ids don't match");
+        throw "Ids don't match";
     }
 
     const pageData = await User.findById(

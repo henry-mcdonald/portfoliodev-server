@@ -10,6 +10,7 @@ router.get('/', authLockedRoute, async(req,res) => {
 })
 
 router.get('/addUsername/:username',authLockedRoute,async(req,res) => {
+    console.log("you've hit the 'add user name route")
     console.log(res.locals)
     try{
         const localUserId = res.locals.user.id
