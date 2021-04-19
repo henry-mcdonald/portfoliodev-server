@@ -84,8 +84,12 @@ router.post('/:userId/:PageName', authLockedRoute, async(req,res) => {
     }
     console.log(pageData.pages[editIndex])
     // console.log(editIndex)
-    pageData.pages[editIndex].html = req.body.content.html
-    pageData.pages[editIndex].css = req.body.content.css
+    pageData.pages[editIndex].html = sanitizeHtml(req.body.content.html, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+      })
+    pageData.pages[editIndex].css = sanitizeHtml(req.body.content.css, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+      })
     await pageData.save()
     console.log(pageData)
     res.json({pageData:pageData})
